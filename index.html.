@@ -3,141 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roshika, Be Mine</title>
+    <title>Roshika, My Eternal Love</title>
     <style>
         body {
             margin: 0;
             overflow: hidden;
-            background: radial-gradient(circle, #1a1a3d, #000);
+            background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
             height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Georgia', serif;
+            position: relative;
         }
-        #stars {
+        #galaxy {
             position: absolute;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1" fill="white"/></svg>') repeat;
-            animation: twinkle 5s infinite;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.8)"/></svg>') repeat;
+            animation: swirl 20s infinite linear;
+            opacity: 0.6;
         }
         #name {
-            font-size: 80px;
-            color: #ff69b4;
+            font-size: 90px;
+            color: #ffccd5;
             text-transform: uppercase;
-            transform: perspective(500px) rotateX(20deg);
-            animation: float 3s infinite ease-in-out, glow 2s infinite;
+            letter-spacing: 5px;
+            opacity: 0;
+            transform: scale(0.5);
+            animation: revealName 2s ease-out forwards, shimmer 3s infinite 2s;
+            text-shadow: 0 0 20px rgba(255, 204, 213, 0.8);
             position: absolute;
-            top: 10%;
+            top: 15%;
         }
         #proposal {
             color: #fff;
-            font-size: 24px;
+            font-size: 28px;
             text-align: center;
-            max-width: 700px;
+            max-width: 800px;
             opacity: 0;
-            animation: fadeIn 2s forwards 2s;
+            line-height: 1.6;
+            animation: fadeInText 3s ease-in forwards 3s;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        #petals {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .petal {
+            position: absolute;
+            font-size: 30px;
+            color: #ff4d6d;
+            animation: fall linear infinite;
         }
         #heart {
-            font-size: 60px;
-            color: #ff0000;
-            margin-top: 20px;
+            font-size: 80px;
+            color: #ff1a40;
             opacity: 0;
-            animation: fadeIn 1s forwards 4s, beat 1s infinite 4s;
+            animation: fadeIn 1s forwards 6s, pulseHeart 1.5s infinite 6s;
+            margin-top: 20px;
         }
         #accept-btn {
-            margin-top: 30px;
-            padding: 15px 30px;
-            font-size: 20px;
-            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            margin-top: 40px;
+            padding: 15px 40px;
+            font-size: 22px;
+            background: linear-gradient(135deg, #ff4d6d, #ffccd5);
             border: none;
-            color: white;
-            border-radius: 25px;
+            color: #fff;
+            border-radius: 30px;
             cursor: pointer;
             opacity: 0;
-            animation: fadeIn 1s forwards 5s;
+            animation: fadeIn 1s forwards 7s;
+            box-shadow: 0 0 20px rgba(255, 77, 109, 0.7);
         }
         #accept-btn:hover {
-            background: linear-gradient(45deg, #ff1493, #ff69b4);
+            background: linear-gradient(135deg, #ff1a40, #ff99ac);
         }
         #finale {
             position: absolute;
-            font-size: 40px;
-            color: #ff0000;
-            display: none;
-            width: 100%;
-            height: 100%;
             top: 0;
             left: 0;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
             justify-content: center;
             align-items: center;
-            flex-wrap: wrap;
-            overflow: hidden;
+            flex-direction: column;
+            color: #ffccd5;
+            font-size: 40px;
+            text-align: center;
+            text-shadow: 0 0 20px #ff4d6d;
         }
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.7; }
-            50% { opacity: 1; }
+        .firework {
+            position: absolute;
+            font-size: 50px;
+            color: #ff1a40;
+            animation: explode 2s ease-out;
         }
-        @keyframes float {
-            0%, 100% { transform: perspective(500px) rotateX(20deg) translateY(0); }
-            50% { transform: perspective(500px) rotateX(20deg) translateY(-20px); }
+        @keyframes swirl {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
-        @keyframes glow {
-            0% { text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff1493; }
-            50% { text-shadow: 0 0 20px #ff69b4, 0 0 30px #ff1493; }
-            100% { text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff1493; }
+        @keyframes revealName {
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes shimmer {
+            0% { text-shadow: 0 0 20px #ffccd5, 0 0 40px #ff4d6d; }
+            50% { text-shadow: 0 0 30px #ffccd5, 0 0 60px #ff4d6d; }
+            100% { text-shadow: 0 0 20px #ffccd5, 0 0 40px #ff4d6d; }
+        }
+        @keyframes fadeInText {
+            to { opacity: 1; }
+        }
+        @keyframes fall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+        @keyframes pulseHeart {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.4); }
+            100% { transform: scale(1); }
         }
         @keyframes fadeIn {
             to { opacity: 1; }
         }
-        @keyframes beat {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.3); }
-            100% { transform: scale(1); }
+        @keyframes explode {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
         }
     </style>
 </head>
 <body>
-    <div id="stars"></div>
+    <div id="galaxy"></div>
     <div id="name">Roshika</div>
     <div id="proposal">
-        Roshika, from the moment I met you, my world changed. You’re the melody in my silence, the light in my darkest code. I’ve fallen for you deeper than the stars above, and I can’t imagine my life without you. Will you be mine, forever and always?
+        Roshika, my love, you are the dawn that breaks my darkness, the melody that dances through my soul. Every heartbeat whispers your name, every dream paints your smile. I’ve searched the stars and found my universe in you. Will you let me love you, cherish you, and hold you close for all eternity? Be mine, my forever muse.
     </div>
+    <div id="petals"></div>
     <div id="heart">❤️</div>
-    <button id="accept-btn" onclick="showFinale()">Say Yes</button>
+    <button id="accept-btn" onclick="showFinale()">Will You Be Mine?</button>
     <div id="finale"></div>
 
     <script>
+        // Rose petals falling
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            petal.innerHTML = '🌹';
+            petal.style.left = `${Math.random() * 100}vw`;
+            petal.style.animationDuration = `${3 + Math.random() * 3}s`;
+            document.getElementById('petals').appendChild(petal);
+            setTimeout(() => petal.remove(), 6000);
+        }
+        setInterval(createPetal, 300);
+
+        // Finale with fireworks
         function showFinale() {
             const finale = document.getElementById('finale');
             finale.style.display = 'flex';
             document.getElementById('accept-btn').style.display = 'none';
-            let hearts = '';
-            for (let i = 0; i < 50; i++) {
-                const heart = document.createElement('span');
-                heart.innerHTML = '❤️';
-                heart.style.position = 'absolute';
-                heart.style.left = `${Math.random() * 100}vw`;
-                heart.style.top = `${Math.random() * 100}vh`;
-                heart.style.animation = `fall ${2 + Math.random() * 3}s linear`;
-                finale.appendChild(heart);
-            }
-            setTimeout(() => {
-                finale.innerHTML = '<span style="font-size: 50px; color: #ff69b4;">Roshika, you’ve made me the happiest! I love you! ❤️</span>';
-            }, 3000);
-        }
+            document.getElementById('proposal').style.display = 'none';
+            document.getElementById('heart').style.display = 'none';
 
-        const style = document.createElement('style');
-        style.innerHTML = `
-            @keyframes fall {
-                0% { transform: translateY(-100vh); opacity: 1; }
-                100% { transform: translateY(100vh); opacity: 0; }
+            // Fireworks
+            for (let i = 0; i < 30; i++) {
+                const firework = document.createElement('span');
+                firework.className = 'firework';
+                firework.innerHTML = '💖';
+                firework.style.left = `${Math.random() * 100}vw`;
+                firework.style.top = `${Math.random() * 100}vh`;
+                finale.appendChild(firework);
+                setTimeout(() => firework.remove(), 2000);
             }
-        `;
-        document.head.appendChild(style);
+
+            // Final message
+            setTimeout(() => {
+                finale.innerHTML = `
+                    <div>Roshika, my heart sings for you!</div>
+                    <div style="font-size: 60px; margin-top: 20px;">I Love You Forever! ❤️</div>
+                `;
+            }, 2500);
+        }
     </script>
 </body>
 </html>
